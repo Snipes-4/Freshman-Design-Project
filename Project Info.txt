@@ -1,0 +1,10 @@
+Project Name: Cipher Helper
+
+Project Members:
+    Kylie Kleam
+    Garrett Lee King
+    Gage Renfrow
+
+Project Overview:
+    This project will include the creation of a system that will
+    allow users to learn about and make use of ciphers.
