@@ -1,2 +1,0 @@
-A basic text file that may include the jobs
-allocated to Gage.
