@@ -1,6 +1,8 @@
 General Progress File
 
 Work to be done:
+    - Make list of sensor supplies.
+    - Finish basic decoder and encoder.
 
 Major Changes:
 

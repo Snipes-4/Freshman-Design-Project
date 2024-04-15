@@ -1,6 +1,8 @@
 Gage's Work File
 
 Current tasks for the week:
+    - Research scanning and converting to txt files with printer scanner.
+    - Research ciphers and teaching ciphers.
 
 Past tasks (with date completed):
 
