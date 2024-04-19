@@ -1,8 +1,9 @@
 Gage's Work File
 
 Current tasks for the week:
-    - Research scanning and converting to txt files with printer scanner.
-    - Research ciphers and teaching ciphers.
+    - Organize outline for learning functionality.
+    - Research Tesseract.
 
 Past tasks (with date completed):
-
+    - Scanner/Conversion Research (4/19/2024)
+    - Cipher Teaching Research (4/19/2024)

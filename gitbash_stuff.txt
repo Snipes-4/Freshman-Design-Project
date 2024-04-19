@@ -1,0 +1,35 @@
+(TERMINAL)
+cd "directory" -> changes directory to "directory"
+cd .. -> moves down one directory
+ls -> shows contents of the current directory
+ls -a -> shows contents of the current directory, including hidden contents
+touch "file" -> creates a file called "file" in the directory
+code . -> opens the current directory in VS Code
+nano "file" -> opens "file" in nano
+cat "file" -> shows the contents of "file"
+
+(GIT)
+git init -> initializes a git repository in the current directory. (DO NOT DO THIS IN THE HOME DIRECTORY: the "~" directory)
+git add "file" -> begins tracking "file" and the changes made to it
+git add . -> begins tracking all files in the directory and all changes made to files
+git status -> returns the current status of changes, and returns the branch the user is on
+git rm --cached "file" -> removes "file" from being tracked
+git commit -m "message" -> commits the current changes and adds "messaage" attached to the commit
+git remote add origin "url" -> connects a local repository to a repository on GitHub at "url"
+git remote --help -> returns help for the git remote function
+git push -u origin main -> pushes all previous commits to the connected repository
+git push origin "branch" -> pushes all commits to connected repository on branch "branch"
+git branch "name" -> creates a branch named "name"
+git switch "name" -> switches to branch named "name"
+git pull oigin "branch" -> pulls changes from github to local repository
+
+rm -rf .git -> removes the repository (BE VERY CAREFUL, rm -rf can destroy your machine if done incorrectly)
+	
+	-- Can also delete repositories by finding the hidden file in the folder and deleting it.
+
+(GIT FLOW)
+Pull origin: git pull origin "branch"
+Check status: git status
+Stage changes: git add
+Make commit: git commit
+Push to github: git push origin "branch"
