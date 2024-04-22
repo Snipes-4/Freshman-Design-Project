@@ -76,8 +76,6 @@ class RotatingMenu:
         self.rotationTarget = - self.arc * (itemNumber / float(len(self.items) - 1))
 
         self.rotationSteps = sinInterpolation(self.rotation, self.rotationTarget, 45)
-        if self.selectedItemNumber == 0:
-            self.rotationSteps = sinInterpolation(-self.rotation, self.rotationTarget, 180)
         print(self.rotation, self.rotationTarget)
 
     def rotate(self, angle):
@@ -90,14 +88,13 @@ class RotatingMenu:
 
             item.x = self.x + cos(rot) * self.radius
             item.y = self.y + sin(rot) * self.radius
-            if item.y > displayHeight and item.x >= displayWidth/2:
-                item.x = self.x + cos(rot*2) * self.radius
-                item.y = self.y + sin(rot*2) * self.radius
-            if item.y > displayHeight and item.x <= displayWidth/2:
-                item.x = self.x - cos(rot*2) * self.radius
-                item.y = self.y - sin(rot*2) * self.radius
 
-
+            if self.selectedItemNumber == 2:
+                self.items[0].x = self.x - cos(rot * 2) * self.radius
+                self.items[0].y = self.y - sin(rot * 2) * self.radius
+            if self.selectedItemNumber == 0:
+                self.items[2].x = self.x + cos(rot * 2) * self.radius
+                self.items[2].y = self.y + sin(rot * 2) * self.radius
 
     def update(self):
         if len(self.rotationSteps) > 0:
