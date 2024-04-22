@@ -1,9 +1,13 @@
 Gage's Work File
 
 Current tasks for the week:
-    - Organize outline for learning functionality.
-    - Research Tesseract.
+    - Test printing from python
+    - Test making python executables
+    - Ask Corriel about GPIO components
+    - Ask about other info to have for the presentation (part costs, etc.)
+    - Write out script for learning functionality
 
 Past tasks (with date completed):
+    - Organized basic Learning functionality outline (4/22/2024)
     - Scanner/Conversion Research (4/19/2024)
     - Cipher Teaching Research (4/19/2024)
