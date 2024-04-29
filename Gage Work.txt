@@ -1,13 +1,11 @@
 Gage's Work File
 
 Current tasks for the week:
-    - Test printing from python
-    - Test making python executables
-    - Ask Corriel about GPIO components
-    - Ask about other info to have for the presentation (part costs, etc.)
-    - Write out script for learning functionality
 
 Past tasks (with date completed):
+    - Got information for presentation. (4/25/2024)
+    - Tested printing with python. (4/28/2024)
+    - Created Learning script. (4/28/2024)
     - Organized basic Learning functionality outline (4/22/2024)
     - Scanner/Conversion Research (4/19/2024)
     - Cipher Teaching Research (4/19/2024)
