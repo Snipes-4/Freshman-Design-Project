@@ -1,0 +1,35 @@
+What is cryptography and what are ciphers?
+	Cryptography, at its most basic level, is the practice and study of manipulating messages and information to make communication more secure and private. It is a field that pervades many others, such as mathematics and computer science.
+	Ciphers are a particular form of cryptography, in which messages have their letters and words shifted and changed to make them difficult or impossible to understand without a key, a piece of information that allows someone to decode the cipher text. Examples of very basic ciphers are the Caesar cipher and the substitution cipher.
+
+History of cryptography.
+	Cryptography as a practice has existed for thousands of years. The earliest known use of cryptography was around 1900 BCE in Egypt, and many other historical civilizations are known to have used cryptography, such as the Greeks and Romans.
+	One of the most significant discoveries in the history of cryptography was the discovery of frequency analysis, which is a process that measures the frequency of characters or groups of characters to aid in the decoding of cipher text.
+	The development of frequency analysis made making secured messages nearly impossible until the development of polyalphabetic cipher, a cipher that utilizes many different substitution alphabets to encode messages.
+	Ultimately, modern cryptography is done using the assumption that a system of ciphers itself is not secure enough, and that the protection of a message’s key was the best form of protection and security in the modern age.
+
+Caesar ciphers.
+	The Caesar cipher is a form of substitution cipher developed in the ancient Roman Empire, used by its namesake, Emperor Julius Caesar.
+	Caesar ciphers are used by shifting the alphabet of a message by a set amount to encode the message. For example, for a Caesar cipher with a shift of 4, every instance of the letter ‘A’ would become the letter ‘E’, every instance of the letter ‘B’ would become the letter ‘F’, and so on for the entire alphabet, wrapping the alphabet around when shifting past the end.
+	This type of cipher seems fairly basic, and indeed is very easy to crack with modern methods and technology, but like many early forms of cryptography, Caesar ciphers and other early ciphers and their derivatives were necessary for the development of further cryptographic ideas and techniques.
+Basic substitution ciphers.
+	The basic substitution cipher is very similar to the Caesar cipher, with the difference being that instead of shifting the cipher alphabet a set amount, each letter is instead set to equal another letter at random, with each letter of the original alphabet being assigned to a unique letter of the cipher alphabet. 
+	So, for example, an encoding message using a substitution cipher may have each instance of the letter ‘A’ replaced with the letter ‘C’, and every instance of the letter ‘B’ replaced with the letter ‘Y’, and so of with every letter of the original alphabet being replaced by another unique letter not used previously.
+	Again, like Caesar ciphers, substitution ciphers seem fairly simplistic and easy to crack with modern techniques and knowledge, which most indeed are, especially with the advent of frequency analysis. But also like Caesar ciphers, substitution ciphers were very important to the history and development of early cryptography. The fundamental idea of substitution is still used in modern ciphers to this day.
+
+Encoding substitution ciphers.
+	Encoding a message using a substitution cipher is fairly straightforward. To do so with just a pencil and paper, you should first write down the entire alphabet that you are using. Then, one by one go through each letter and choose a random letter from the alphabet that you have not used previously to replace it with. Once you have done so, you can simply use the cipher pair of alphabets to write out the message. 
+	Many modern programs can be created and used to do this process quickly, but at their fundamental level, electronic substitution ciphers work the same as physical ones, subbing out every letter of the alphabet for a random and unique letter on the cipher alphabet.
+
+Decoding substitution ciphers.
+	The most straightforward way of decoding a ciphered message is to use the key to solve it. However, in lieu of a key, the most common way of solving a substitution cipher is to use a previously discussed technique: frequency analysis.
+    The basic premise of frequency analysis is noting the frequency of letters in a cipher and replacing them with letters of equivalent frequency in the corresponding alphabet.
+    For example, the most frequently used letter in the English alphabet is the letter ‘E’. So if the letter ‘K’ is the most frequent letter in our cipher, we can assume that the original letter that ‘K’ was substituted for was the letter ‘E’. This process can be repeated for the other letters of the alphabet, using predefined frequencies to compare the cipher text’s letter frequency to.
+    Frequency analysis can run into issues, such as the frequencies of various letters being close to each other. Such issues are primarily solved through trial and error. Such an issue is most common in shorter cipher text.
+
+Making substitution ciphers stronger.
+	Substitution ciphers, in modern times with modern techniques and technology, are fairly weak. So how would one make them stronger?
+	One of the common solutions to making a substitution cipher stronger is encoding a message multiple times with varying alphabets. For example, a message may be encoding using the substitution method discussed earlier, and then the new message may be encoded once again, using a new cipher alphabet. 
+	Another solution is to expand the ‘alphabet’ used when encoding. For example, rather than replacing single letters with other letters, you could replace pairs of letters with other pairs, such as the pair ‘EE’ being replaced with ‘TR’, or the pair ‘AB’ being replaced with ‘YH’. This expands the complexity of the cipher.
+
+Other types of ciphers.
