@@ -1,6 +1,12 @@
 Garrett's Work File
 
-Current tasks for the week: the gooey idk
+Current tasks for the week: the gooey idk, still lol
+
+May 2nd
+I got my feet wet in some Kivy stuff. Will eventually update the main menu
+to look prettier based off a video I saw.
+For now, the main menu is put together, and I am able to change the menu to the decoding menu by
+pressing the corresponding button. Very cool!
 
 Past tasks (with date completed):
 
