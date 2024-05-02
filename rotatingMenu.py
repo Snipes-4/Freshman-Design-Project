@@ -75,8 +75,15 @@ class RotatingMenu:
 
         self.rotationTarget = - self.arc * (itemNumber / float(len(self.items) - 1))
 
+
+        # if self.selectedItemNumber == 0:
+
+        if self.rotationTarget >= pi:
+            self.rotationTarget = pi + self.rotationTarget
         self.rotationSteps = sinInterpolation(self.rotation, self.rotationTarget, 45)
+        print(self.selectedItemNumber)
         print(self.rotation, self.rotationTarget)
+        print(self.rotationSteps)
 
     def rotate(self, angle):
         """@param angle: The angle in radians by which the menu is rotated.
