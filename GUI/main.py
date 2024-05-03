@@ -22,7 +22,7 @@ Builder.load_string("""
     bold: "True"
     background_normal: ""
     
-<MenuScreen>
+<MainScreen>
     BoxLayout:
         orientation: "vertical"
         padding: 50
@@ -30,35 +30,56 @@ Builder.load_string("""
         MainScreenButton:
             text: "Decode"
             background_color: DECODE_COLOR
+            on_release:
+                root.manager.transition.direction = "up"
+                root.manager.current = "decode"
+                
         MainScreenButton:
             text: "Encode"
             background_color: ENCODE_COLOR
-            on_press:
+            on_release:
                 root.manager.transition.direction = "up"
                 root.manager.current = "encode"
         MainScreenButton:
             text: "Learn"
             background_color: LEARN_COLOR
+            on_release:
+                root.manager.transition.direction = "up"
+                root.manager.current = "encode"
+            
+<BackArrow@Button>
+    size_hint: (.1,.1)
+    pos_hint: {"center_x": 0+self.width, "center_y": .94}
+    background_color: (0,0,0,0)
+    Image:
+        source: "images/backarrow.png"
+        center_x: self.parent.center_x
+        center_y: self.parent.center_y
+        size_hint: (self.parent.width, self.parent.height)
             
 <EncodeScreen>
     FloatLayout:
-        Button:
-            size_hint: (.1,.13)
-            pos_hint: {'center_x': 0.05, 'center_y': .93}
-            background_color: (0,0,0,0)
-            on_release:
-                root.manager.current = "main"
-            Image:
-                source: "images/backarrow.png"
-                center_x: self.parent.center_x
-                center_y: self.parent.center_y
-                size_hint: (self.parent.width, self.parent.height)
-        
-        
+        BackArrow:
+            on_release: root.manager.current = "main"
+            
+<DecodeScreen>
+    FloatLayout:
+        BackArrow:
+            on_release: root.manager.current = "main"
+        TextInput:
+            multiline: False
+            size_hint: (.5, .1)
+            pos: (self.parent.width-self.width,0)
+
+            
+<LearnScreen>
+    FloatLayout:                
+        BackArrow:  
+            on_release: root.manager.current = "main"  
 """)
 
 
-class MenuScreen(Screen):
+class MainScreen(Screen):
     pass
 
 
@@ -66,13 +87,23 @@ class EncodeScreen(Screen):
     pass
 
 
+class DecodeScreen(Screen):
+    pass
+
+
+class LearnScreen(Screen):
+    pass
+
+
 class Test(App):
     def build(self):
         Window.background_normal = ""
-        Window.clearcolor = BG_COLOR
+        Window.clearcolor = "#32322C"
         sm = ScreenManager(transition=NoTransition())
-        sm.add_widget(MenuScreen(name='main'))
+        sm.add_widget(MainScreen(name='main'))
         sm.add_widget(EncodeScreen(name='encode'))
+        sm.add_widget(DecodeScreen(name='decode'))
+        sm.add_widget(LearnScreen(name='learn'))
         return sm
 
 
