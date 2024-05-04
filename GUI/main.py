@@ -46,7 +46,7 @@ Builder.load_string("""
             background_color: LEARN_COLOR
             on_release:
                 root.manager.transition.direction = "up"
-                root.manager.current = "encode"
+                root.manager.current = "learn"
             
 <BackArrow@Button>
     pos_hint: {"top":1, "left":1, "x":.005}
@@ -65,6 +65,7 @@ Builder.load_string("""
             on_release: root.manager.current = "main"
         TextInput:
             id: userinput
+            focus: True
             hint_text: "Input message"
             size_hint: .4, .2
             size: self.parent.x, self.parent.y
@@ -72,6 +73,8 @@ Builder.load_string("""
             padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
             font_size: 25
             halign: "center"
+            multiline:False
+            on_text_validate: encodedinput.text="encoded output" # this is how our message gets encoded
         Label:
             text: "User Input"
             size_hint: userinput.size_hint
@@ -86,6 +89,7 @@ Builder.load_string("""
             padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
             font_size: 25
             halign: "center"
+            focus: False
         Label:
             text: "Encoded Input"
             size_hint: userinput.size_hint
@@ -101,10 +105,10 @@ Builder.load_string("""
         TextInput:
             multiline: False
             size_hint: (.5, .1)
-    GridLayout:
-        cols: 1
-        spacing: 10
-        size_hint_y: None
+        GridLayout:
+            cols: 1
+            spacing: 10
+            size_hint_y: None
             
             
 <LearnScreen>
