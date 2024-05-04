@@ -6,6 +6,7 @@ from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 from kivy.lang import Builder
 from kivy.uix.scrollview import ScrollView
+from kivy.graphics import Rectangle, Color
 
 Builder.load_string("""
 #:set DECODE_COLOR "#7D2F5C"
@@ -74,15 +75,15 @@ Builder.load_string("""
             font_size: 25
             halign: "center"
             multiline:False
-            on_text_validate: encodedinput.text="encoded output" # this is how our message gets encoded
+            on_text_validate: encodedmessage.text="encoded ory ong and sawdawdawdwadawdawdawdawdwag" # this is how our message gets encoded
         Label:
             text: "User Input"
             size_hint: userinput.size_hint
             font_size: userinput.font_size
             pos: userinput.x, userinput.y+80
         TextInput:
-            id: encodedinput
-            hint_text: "Encoded message"
+            id: keyinput
+            hint_text: "Input cipher key"
             size_hint: .4, .2
             size: self.parent.x, self.parent.y
             pos_hint: {"bottom":1, "right":1}
@@ -91,24 +92,59 @@ Builder.load_string("""
             halign: "center"
             focus: False
         Label:
-            text: "Encoded Input"
+            text: "Encoding Key"
             size_hint: userinput.size_hint
             font_size: userinput.font_size
-            pos: encodedinput.x, encodedinput.y+80
-
+            pos: keyinput.x, keyinput.y+80
+        Label:
+            id: encodedmessage
+            size_hint_y: None
+            text_size: self.width, None
+            font_size: 40
+            height: self.texture_size[1]
+            pos_hint: {"center_y":.6}
+            padding_x: 30
+            
             
             
 <DecodeScreen>
     FloatLayout:
         BackArrow:
             on_release: root.manager.current = "main"
-        TextInput:
-            multiline: False
-            size_hint: (.5, .1)
         GridLayout:
-            cols: 1
-            spacing: 10
-            size_hint_y: None
+            rows:3
+            rows_minimum: {0: 20, 1: 20, 2: 50}
+            Label:
+                text:"uhh eerm"
+                size_hint_y: .3
+            Label:
+                text:"what the spruce"
+                size_hint_y: .3
+                
+            GridLayout: 
+                cols:3
+                GridLayout:
+                    rows:2
+                    TextInput:
+                        hint_text: "Selected Letter"
+                    TextInput:
+                        hint_text: "Replace with"
+                GridLayout:
+                    rows:3
+                    Button:
+                        text:"Clear"
+                    Button:
+                        text:"Undo"
+                    Button:
+                        text:"Replace"
+                Label:
+                    font_size: '40sp'
+                    outline_color: 0, 0, 0
+                    outline_width: 1
+                    text: 'frequency'
+                    
+    
+            
             
             
 <LearnScreen>
