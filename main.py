@@ -27,5 +27,3 @@ while (running == True):
             running = False
         case _:
             print("Invalid input, try again")
-
-
