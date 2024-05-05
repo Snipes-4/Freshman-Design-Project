@@ -187,15 +187,11 @@
                     text: 'frequency'
                     
     
-            
-            
-            
+
 <LearnScreen>
     Carousel:
         # SLIDE 1
         FloatLayout:
-            BackArrow:
-                on_release: root.manager.current = "main"
             Label:
                 pos_x: -20
                 pos_hint: {"center_y": .83}
@@ -216,8 +212,6 @@
                 font_size: '20'
         # SLIDE 2
         FloatLayout:
-            BackArrow:
-                on_release: root.manager.current = "main"
             Label:
                 id: title2
                 pos_x: -20
@@ -251,8 +245,6 @@
                 font_size: '20'
         # SLIDE 2
         FloatLayout:
-            BackArrow:
-                on_release: root.manager.current = "main"
             Label:
                 id: title2
                 pos_x: -20
@@ -284,3 +276,6 @@
                 text_size: root.width-90, None
                 size: self.texture_size
                 font_size: '20'
+    FloatLayout:
+        BackArrow:
+            on_release: root.manager.current = "main"
