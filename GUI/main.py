@@ -46,8 +46,8 @@ class Test(App):
         sm.add_widget(DecodeScreen(name='decode'))
         sm.add_widget(LearnScreen(name='learn'))
         sm.add_widget(InputScreen(name='input'))
-        sm.add_widget(InputScreen(name='withoutkey'))
-        sm.add_widget(InputScreen(name='withkey'))
+        sm.add_widget(WithoutKeyScreen(name='withoutkey'))
+        sm.add_widget(WithKeyScreen(name='withkey'))
         return sm
 
 
