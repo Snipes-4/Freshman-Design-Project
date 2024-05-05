@@ -198,3 +198,90 @@
     FloatLayout:                
         BackArrow:  
             on_release: root.manager.current = "main"  
+        Carousel:
+            # SLIDE 1
+            FloatLayout:
+                Label:
+                    pos_x: -20
+                    pos_hint: {"center_y": .83}
+                    text: "What is cryptography and what are ciphers?"
+                    font_size: '35'
+                    bold: True
+                Label:
+                    text:"Cryptography, at its most basic level, is the practice and study of manipulating messages and information to make communication more secure and private. It is a field that pervades many others, such as mathematics and computer science."
+                    pos: (10, 50)
+                    text_size: root.width-90, None
+                    size: self.texture_size
+                    font_size: '20'
+                Label:
+                    text:"Ciphers are a particular form of cryptography, in which messages have their letters and words shifted and changed to make them difficult or impossible to understand without a key, a piece of information that allows someone to decode the cipher text. Examples of very basic ciphers are the Caesar cipher and the substitution cipher."
+                    pos: (10, -100)
+                    text_size: root.width-90, None
+                    size: self.texture_size
+                    font_size: '20'
+            # SLIDE 2
+            FloatLayout:
+                Label:
+                    id: title2
+                    pos_x: -20
+                    pos_hint: {"center_y": .86}
+                    text: "History of cryptography"
+                    font_size: '35'
+                    bold: True
+                Label:
+                    text:"Cryptography as a practice has existed for thousands of years. The earliest known use of cryptography was around 1900 BCE in Egypt, and many other historical civilizations are known to have used cryptography, such as the Greeks and Romans."
+                    pos: (10, title2.y-100)
+                    text_size: root.width-90, None
+                    size: self.texture_size
+                    font_size: '20'
+                Label:
+                    text:"One of the most significant discoveries in the history of cryptography was the discovery of frequency analysis, which is a process that measures the frequency of characters or groups of characters to aid in the decoding of cipher text."
+                    pos: (10, 0)
+                    text_size: root.width-90, None
+                    size: self.texture_size
+                    font_size: '20'
+                Label:
+                    text:"The development of frequency analysis made making secured messages nearly impossible until the development of polyalphabetic cipher, a cipher that utilizes many different substitution alphabets to encode messages."
+                    pos: (10, -100)
+                    text_size: root.width-90, None
+                    size: self.texture_size
+                    font_size: '20'
+                Label:
+                    text:"Ultimately, modern cryptography is done using the assumption that a system of ciphers itself is not secure enough, and that the protection of a message’s key was the best form of protection and security in the modern age."
+                    pos: (10, -190)
+                    text_size: root.width-90, None
+                    size: self.texture_size
+                    font_size: '20'
+            # SLIDE 2
+            FloatLayout:
+                Label:
+                    id: title2
+                    pos_x: -20
+                    pos_hint: {"center_y": .86}
+                    text: "History of cryptography"
+                    font_size: '35'
+                    bold: True
+                Label:
+                    text:"Cryptography as a practice has existed for thousands of years. The earliest known use of cryptography was around 1900 BCE in Egypt, and many other historical civilizations are known to have used cryptography, such as the Greeks and Romans."
+                    pos: (10, title2.y-100)
+                    text_size: root.width-90, None
+                    size: self.texture_size
+                    font_size: '20'
+                Label:
+                    text:"One of the most significant discoveries in the history of cryptography was the discovery of frequency analysis, which is a process that measures the frequency of characters or groups of characters to aid in the decoding of cipher text."
+                    pos: (10, 0)
+                    text_size: root.width-90, None
+                    size: self.texture_size
+                    font_size: '20'
+                Label:
+                    text:"The development of frequency analysis made making secured messages nearly impossible until the development of polyalphabetic cipher, a cipher that utilizes many different substitution alphabets to encode messages."
+                    pos: (10, -100)
+                    text_size: root.width-90, None
+                    size: self.texture_size
+                    font_size: '20'
+                Label:
+                    text:"Ultimately, modern cryptography is done using the assumption that a system of ciphers itself is not secure enough, and that the protection of a message’s key was the best form of protection and security in the modern age."
+                    pos: (10, -190)
+                    text_size: root.width-90, None
+                    size: self.texture_size
+                    font_size: '20'
