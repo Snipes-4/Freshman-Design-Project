@@ -1,132 +1,103 @@
 from kivy.app import App
-from kivy.properties import StringProperty
+from kivy.properties import StringProperty, ObjectProperty, NumericProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 from kivy.lang import Builder
 from kivy.uix.scrollview import ScrollView
+from kivy.graphics import Rectangle, Color
+from decoder import Decoder
+from encoder import Encoder
 
-Builder.load_string("""
-#:set DECODE_COLOR "#7D2F5C"
-#:set ENCODE_COLOR "#EA3033"
-#:set LEARN_COLOR "#4A6C6F" 
-#:set BACKGROUND_COLOR "#32322C"
-
-<MainScreenButton@Button>
-    text_size: self.size
-    font_size: 60
-    size_hint:(.75, 1)
-    pos_hint: {'center_x': .5, 'center_y': .5}
-    valign: "middle"
-    halign: "center"
-    bold: "True"
-    background_normal: ""
-    
-<MainScreen>
-    BoxLayout:
-        orientation: "vertical"
-        padding: 50
-        spacing: 30
-        MainScreenButton:
-            text: "Decode"
-            background_color: DECODE_COLOR
-            on_release:
-                root.manager.transition.direction = "up"
-                root.manager.current = "decode"
-                
-        MainScreenButton:
-            text: "Encode"
-            background_color: ENCODE_COLOR
-            on_release:
-                root.manager.transition.direction = "up"
-                root.manager.current = "encode"
-        MainScreenButton:
-            text: "Learn"
-            background_color: LEARN_COLOR
-            on_release:
-                root.manager.transition.direction = "up"
-                root.manager.current = "encode"
-            
-<BackArrow@Button>
-    pos_hint: {"top":1, "left":1, "x":.005}
-    size_hint: None, None
-    size: 60,60
-    background_color: (0,0,0,0)
-    Image:
-        source: "images/backarrow.png"
-        pos: self.parent.pos
-        size_hint: None, None
-        size: self.parent.size
-        
-<EncodeScreen>
-    FloatLayout:
-        BackArrow:
-            on_release: root.manager.current = "main"
-        TextInput:
-            id: userinput
-            hint_text: "Input message"
-            size_hint: .4, .2
-            size: self.parent.x, self.parent.y
-            pos_hint: {"bottom":1, "left":1}
-            padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
-            font_size: 25
-            halign: "center"
-        Label:
-            text: "User Input"
-            size_hint: userinput.size_hint
-            font_size: userinput.font_size
-            pos: userinput.x, userinput.y+80
-        TextInput:
-            id: encodedinput
-            hint_text: "Encoded message"
-            size_hint: .4, .2
-            size: self.parent.x, self.parent.y
-            pos_hint: {"bottom":1, "right":1}
-            padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
-            font_size: 25
-            halign: "center"
-        Label:
-            text: "Encoded Input"
-            size_hint: userinput.size_hint
-            font_size: userinput.font_size
-            pos: encodedinput.x, encodedinput.y+80
-
-            
-            
-<DecodeScreen>
-    FloatLayout:
-        BackArrow:
-            on_release: root.manager.current = "main"
-        TextInput:
-            multiline: False
-            size_hint: (.5, .1)
-    GridLayout:
-        cols: 1
-        spacing: 10
-        size_hint_y: None
-            
-            
-<LearnScreen>
-    FloatLayout:                
-        BackArrow:  
-            on_release: root.manager.current = "main"  
-""")
-
+Builder.load_file("main.kv")
 
 class MainScreen(Screen):
     pass
 
-
 class EncodeScreen(Screen):
-    pass
-
+    encode_key_text_input = ObjectProperty()
+    encode_message_text_input = ObjectProperty()
+    encoded_label = ObjectProperty()
+    
+    def encode_message(self, message, key):
+        if len(key) >= 26:
+            e1 = Encoder(message, key)
+            e1.encode()
+            self.encoded_label.text = str(e1)
+        else:
+            pass
+        
 
 class DecodeScreen(Screen):
-    pass
+    edited_message_label = ObjectProperty()
+    original_message_label = ObjectProperty()
+    frequency_label = ObjectProperty()
+    d1 = ''
+    message = ''
+    decoder_key = ''
+    frequency = ''
 
+    def set_message(self, message):
+        DecodeScreen.message = message
+    def set_key(self, key):
+        DecodeScreen.decoder_key = key
+
+    def on_enter(self):
+        self.edited_message_label.text = self.message
+        self.original_message_label.text = self.message
+        self.d1 = Decoder(self.message)
+        self.frequency = ''
+        self.d1.frequency()
+        for key,value in zip(self.d1.letter_frequency.keys(),self.d1.letter_frequency.values()):
+            self.frequency += f"{key} : {value}%        "
+        self.frequency_label.text = self.frequency
+        if self.decoder_key != '':
+            self.d1.generate_key(self.decoder_key)
+            self.d1.decode_by_key()
+            string_result = "".join(self.d1.message)
+            self.edited_message_label.text = string_result
+
+    def replace_letter(self, new_letter: str, select_letter: str):
+        if (new_letter != '' and ord(new_letter) in range(97,122)) and select_letter != '':
+            self.d1.replace_letter(select_letter, new_letter)
+            string_result = "".join(self.d1.message)
+            self.edited_message_label.text = string_result
+
+    def undo_letter(self, select_letter: str):
+        if select_letter != '':
+            self.d1.undo(select_letter)
+            string_result = "".join(self.d1.message)
+            self.edited_message_label.text = string_result
+
+    def clear_message(self):
+        self.d1 = Decoder(self.message)
+        self.on_enter()
+
+class WithKeyScreen(Screen):
+    message_text_input = ObjectProperty()
+    key_text_input = ObjectProperty()
+
+    def submit_messageandkey(self):
+        self.message = self.message_text_input.text
+        self.key = self.key_text_input.text
+        DecodeScreen.set_message(self, self.message)
+        DecodeScreen.set_key(self, self.key)
+        self.manager.current = 'decode'
+        
+
+class WithoutKeyScreen(Screen):
+    message_text_input = ObjectProperty()
+
+    def submit_message(self):
+        self.message = self.message_text_input.text
+        DecodeScreen.set_message(self, self.message)
+        self.manager.current = 'decode'
 
 class LearnScreen(Screen):
+    pass
+
+class InputScreen(Screen):
     pass
 
 
@@ -139,6 +110,9 @@ class Test(App):
         sm.add_widget(EncodeScreen(name='encode'))
         sm.add_widget(DecodeScreen(name='decode'))
         sm.add_widget(LearnScreen(name='learn'))
+        sm.add_widget(InputScreen(name='input'))
+        sm.add_widget(WithoutKeyScreen(name='withoutkey'))
+        sm.add_widget(WithKeyScreen(name='withkey'))
         return sm
 
 

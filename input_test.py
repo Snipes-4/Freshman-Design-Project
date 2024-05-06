@@ -38,6 +38,7 @@ if what_to_do == "decode":
 elif what_to_do == "encode":
     #word: fortnite
     #key : soqtrkjdnpgbufimalevcyzxhw
+    #kilvfnvr
     encode_this = input("Enter the message to encode: ")
     encode_key = input("Enter key in lowercase and alphabetical order: ")
     e1 = Encoder(encode_this, encode_key)
