@@ -21,9 +21,12 @@ class EncodeScreen(Screen):
     encoded_label = ObjectProperty()
     
     def encode_message(self, message, key):
-        e1 = Encoder(message, key)
-        e1.encode()
-        self.encoded_label.text = str(e1)
+        if len(key) >= 26:
+            e1 = Encoder(message, key)
+            e1.encode()
+            self.encoded_label.text = str(e1)
+        else:
+            pass
         
 
 class DecodeScreen(Screen):

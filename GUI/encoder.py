@@ -14,7 +14,10 @@ class Encoder:
             self.message_indexes.update({str(x): indexes})
 
         for letter,key in zip(self.alphabet,self.key):
-            self.key_indexes.update({str(letter): str(key)})
+            if len(self.key) == 26:
+                self.key_indexes.update({str(letter): str(key)})
+            else:
+                print("Error: Incorrect key!")
 
     def encode(self):
         for x in self.original_message:
