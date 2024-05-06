@@ -18,44 +18,6 @@ import pytesseract
 
 Builder.load_file("main.kv")
 
-def file_text(file_name: str) -> str:
-
-    if os.path.join(file_name):
-
-        pdf_path = os.path.join(file_name)
-        image = convert_from_path(pdf_path)
-        save_name = file_name[:-4]
-        for i in range(len(image)):
-            image[i].save(save_name + '.png', 'PNG')
-        save_txt = save_name + '.txt'
-        output_file = os.path.join(save_name + '.png')
-        with open(save_txt, "w") as file:
-            file.write(pytesseract.image_to_string(Image.open(output_file)))
-        os.remove(output_file)
-
-        file1 = open(save_txt, 'r')
-        Lines = file1.readlines()
-        file1.close()
-
-        count = 0
-        for line in Lines:
-            Lines[count] = line.strip()
-            count += 1
-
-        output = ''
-        for line in Lines:
-            output += line
-
-        regex = re.compile('[^a-zA-Z]')
-        output = regex.sub('', output)
-        output = output.lower()
-        
-        file1 = open(save_txt, "w")
-        file1.write(output)
-        file1.close()
-
-        return output
-
 class MainScreen(Screen):
     pass
 
@@ -118,25 +80,109 @@ class DecodeScreen(Screen):
         self.d1 = Decoder(self.message)
         self.on_enter()
 
+class ImportScreen(Screen):
+    file_text_input = ObjectProperty()
+    input_message = ObjectProperty()
+    file_message = ''
+
+    def on_enter(self):
+        self.input_message.hint_text = "Input file name if importing from file"
+
+    def file_checker(self):
+        filename = str(self.file_text_input.text)
+        if filename != '':
+            self.file_message = self.file_text(filename)
+            WithKeyScreen.set_message(self,self.file_message)
+            WithoutKeyScreen.set_message(self,self.file_message)
+            self.manager.current = "input"
+        else:
+            self.input_message.hint_text = "Please input a file name"
+    
+    def file_text(self, file_name: str) -> str:
+
+        if os.path.join(file_name):
+
+            pdf_path = os.path.join(file_name)
+            image = convert_from_path(pdf_path)
+            save_name = file_name[:-4]
+            for i in range(len(image)):
+                image[i].save(save_name + '.png', 'PNG')
+            save_txt = save_name + '.txt'
+            output_file = os.path.join(save_name + '.png')
+            with open(save_txt, "w") as file:
+                file.write(pytesseract.image_to_string(Image.open(output_file)))
+            os.remove(output_file)
+
+            file1 = open(save_txt, 'r')
+            Lines = file1.readlines()
+            file1.close()
+
+            count = 0
+            for line in Lines:
+                Lines[count] = line.strip()
+                count += 1
+
+            output = ''
+            for line in Lines:
+                output += line
+
+            regex = re.compile('[^a-zA-Z]')
+            output = regex.sub('', output)
+            output = output.lower()
+            
+            file1 = open(save_txt, "w")
+            file1.write(output)
+            file1.close()
+
+            return output
+
 class WithKeyScreen(Screen):
     message_text_input = ObjectProperty()
     key_text_input = ObjectProperty()
+    text_input_label = ObjectProperty()
+    message = ''
+
+    def on_enter(self):
+        if self.message != '':
+            self.text_input_label.hint_text = "Message imported from file"
+
+    def set_message(self, message):
+        WithKeyScreen.message = message
 
     def submit_messageandkey(self):
-        self.message = self.message_text_input.text
-        self.key = self.key_text_input.text
-        DecodeScreen.set_message(self, self.message)
-        DecodeScreen.set_key(self, self.key)
-        self.manager.current = 'decode'
+        if self.message != '':
+            self.key = self.key_text_input.text
+            DecodeScreen.set_message(self, self.message)
+            DecodeScreen.set_key(self, self.key)
+            self.manager.current = 'decode'
+        else:
+            self.message = self.message_text_input.text
+            self.key = self.key_text_input.text
+            DecodeScreen.set_message(self, self.message)
+            DecodeScreen.set_key(self, self.key)
+            self.manager.current = 'decode'
         
 
 class WithoutKeyScreen(Screen):
     message_text_input = ObjectProperty()
+    text_input_label = ObjectProperty()
+    message = ''
+
+    def on_enter(self):
+        if self.message != '':
+            self.text_input_label.hint_text = "Message imported from file"
+
+    def set_message(self, message):
+        WithoutKeyScreen.message = message
 
     def submit_message(self):
-        self.message = self.message_text_input.text
-        DecodeScreen.set_message(self, self.message)
-        self.manager.current = 'decode'
+        if self.message != '':
+            DecodeScreen.set_message(self, self.message)
+            self.manager.current = 'decode'
+        else:
+            self.message = self.message_text_input.text
+            DecodeScreen.set_message(self, self.message)
+            self.manager.current = 'decode'
 
 class LearnScreen(Screen):
     pass
@@ -157,6 +203,7 @@ class Test(App):
         sm.add_widget(InputScreen(name='input'))
         sm.add_widget(WithoutKeyScreen(name='withoutkey'))
         sm.add_widget(WithKeyScreen(name='withkey'))
+        sm.add_widget(ImportScreen(name='import'))
         return sm
 
 
