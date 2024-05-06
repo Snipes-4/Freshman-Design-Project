@@ -12,6 +12,7 @@ Caesar ciphers.
 	The Caesar cipher is a form of substitution cipher developed in the ancient Roman Empire, used by its namesake, Emperor Julius Caesar.
 	Caesar ciphers are used by shifting the alphabet of a message by a set amount to encode the message. For example, for a Caesar cipher with a shift of 4, every instance of the letter ‘A’ would become the letter ‘E’, every instance of the letter ‘B’ would become the letter ‘F’, and so on for the entire alphabet, wrapping the alphabet around when shifting past the end.
 	This type of cipher seems fairly basic, and indeed is very easy to crack with modern methods and technology, but like many early forms of cryptography, Caesar ciphers and other early ciphers and their derivatives were necessary for the development of further cryptographic ideas and techniques.
+
 Basic substitution ciphers.
 	The basic substitution cipher is very similar to the Caesar cipher, with the difference being that instead of shifting the cipher alphabet a set amount, each letter is instead set to equal another letter at random, with each letter of the original alphabet being assigned to a unique letter of the cipher alphabet. 
 	So, for example, an encoding message using a substitution cipher may have each instance of the letter ‘A’ replaced with the letter ‘C’, and every instance of the letter ‘B’ replaced with the letter ‘Y’, and so of with every letter of the original alphabet being replaced by another unique letter not used previously.
