@@ -15,9 +15,12 @@ class Decoder:
         
     def frequency(self):
         for x in self.message:
-            count = self.message.count(str(x))
-            percent = int(float(count/len(self.message)) * 100)
-            self.letter_frequency.update({str(x): str(percent)})
+            if ord(x) in range(65,122):
+                count = self.message.count(str(x))
+                percent = int(float(count/len(self.message)) * 100)
+                self.letter_frequency.update({str(x): str(percent)})
+            else:
+                continue
 
     def replace_letter(self, chosen_letter, new_letter):
         if chosen_letter in self.original_message:
