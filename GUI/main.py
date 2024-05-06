@@ -145,6 +145,8 @@ class Test(App):
     def build(self):
         Window.background_normal = ""
         Window.clearcolor = "#32322C"
+        Window.size = (800,600)
+
         sm = ScreenManager(transition=NoTransition())
         sm.add_widget(MainScreen(name='main'))
         sm.add_widget(EncodeScreen(name='encode'))
