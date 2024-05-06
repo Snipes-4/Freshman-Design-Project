@@ -10,7 +10,51 @@ from kivy.graphics import Rectangle, Color
 from decoder import Decoder
 from encoder import Encoder
 
+from PIL import Image
+import os
+import re
+from pdf2image import convert_from_path
+import pytesseract
+
 Builder.load_file("main.kv")
+
+def file_text(file_name: str) -> str:
+
+    if os.path.join(file_name):
+
+        pdf_path = os.path.join(file_name)
+        image = convert_from_path(pdf_path)
+        save_name = file_name[:-4]
+        for i in range(len(image)):
+            image[i].save(save_name + '.png', 'PNG')
+        save_txt = save_name + '.txt'
+        output_file = os.path.join(save_name + '.png')
+        with open(save_txt, "w") as file:
+            file.write(pytesseract.image_to_string(Image.open(output_file)))
+        os.remove(output_file)
+
+        file1 = open(save_txt, 'r')
+        Lines = file1.readlines()
+        file1.close()
+
+        count = 0
+        for line in Lines:
+            Lines[count] = line.strip()
+            count += 1
+
+        output = ''
+        for line in Lines:
+            output += line
+
+        regex = re.compile('[^a-zA-Z]')
+        output = regex.sub('', output)
+        output = output.lower()
+        
+        file1 = open(save_txt, "w")
+        file1.write(output)
+        file1.close()
+
+        return output
 
 class MainScreen(Screen):
     pass
