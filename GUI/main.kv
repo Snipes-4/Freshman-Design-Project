@@ -270,13 +270,16 @@
                 id: edited_message
                 text:"this message changes"
                 size_hint_y: .3
-                text_size: self.size
+                valign: "middle"
+                font_size: root.height/20
+
             Label:
                 id: original_message
                 text:"this message stays the same"
                 color: BUTTON_COLOR
                 size_hint_y: .3
-                text_size: self.size
+                valign: "middle"
+                font_size: root.height/20
                 
             GridLayout: 
                 cols:3
