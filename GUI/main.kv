@@ -26,7 +26,7 @@
             text: "Decode"
             background_color: DECODE_COLOR
             on_release:
-                root.manager.current = "input"
+                root.manager.current = "import"
                 
         MainScreenButton:
             text: "Encode"
@@ -105,7 +105,48 @@
             pos_hint: {"center_y":.6}
             padding_x: 30
             
-            
+<ImportScreen>    
+    file_text_input: fileinput
+    input_message: fileinput
+    on_enter: ()
+    FloatLayout:
+        BackArrow:
+            on_release: root.manager.current = "main"
+        GridLayout:
+            rows:3
+            rows_minimum: {0: 50, 1: 20}
+            Label:
+                text: "Would you like to input manually or from a file?"
+                size_hint_y: None
+                text_size: self.width, None
+                font_size: 40
+                height: self.texture_size[1]
+                pos_hint: {"center_y":.6}
+                padding_x: 30
+            GridLayout:
+                cols:2
+                Button:
+                    text:"Manually"
+                    background_color: BUTTON_COLOR
+                    size_hint: 0.2,0.3
+                    on_release: root.manager.current = "input"
+                Button:
+                    text:"From File"
+                    background_color: BUTTON_COLOR
+                    size_hint: 0.2,0.3
+                    on_release: 
+                        root.file_checker()
+            TextInput:
+                id: fileinput
+                focus: False
+                hint_text: "Input file name if importing from file"
+                size_hint: .4, .2
+                size: self.parent.x, self.parent.y
+                pos_hint: {"bottom":1, "left":1}
+                padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+                font_size: 25
+                halign: "center"
+                multiline:True
 <InputScreen>
     FloatLayout:
         BackArrow:
@@ -134,6 +175,8 @@
 <WithKeyScreen>
     message_text_input: usermessageinput
     key_text_input: userkeyinput
+    text_input_label: usermessageinput
+    on_enter: ()
     FloatLayout:                
         BackArrow:  
             on_release: root.manager.current = "input"
@@ -178,6 +221,8 @@
                     root.submit_messageandkey()          
 <WithoutKeyScreen>
     message_text_input: usermessageinput
+    text_input_label: usermessageinput
+    on_enter: ()
     FloatLayout:                
         BackArrow:  
             on_release: root.manager.current = "input"
