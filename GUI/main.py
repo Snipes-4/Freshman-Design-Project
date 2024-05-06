@@ -1,12 +1,8 @@
 from kivy.app import App
 from kivy.properties import StringProperty, ObjectProperty, NumericProperty
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.button import Button
 from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 from kivy.lang import Builder
-from kivy.uix.scrollview import ScrollView
-from kivy.graphics import Rectangle, Color
 from decoder import Decoder
 from encoder import Encoder
 
