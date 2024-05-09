@@ -357,53 +357,55 @@
         FloatLayout:
             Label:
                 id: title2
-                pos_x: -20
-                pos_hint: {"center_y": .86}
-                text: "History of cryptography"
-                font_size: '35'
+                pos_hint: {"center_y": .85, "center_x":.5}
+                size_hint: 1, None
+                height: self.texture_size[1]
+                text: "History of Cryptography"
+                font_size: root.height/16
                 bold: True
             Label:
                 text:"Cryptography as a practice has existed for thousands of years. The earliest known use of cryptography was around 1900 BCE in Egypt, and many other historical civilizations are known to have used cryptography, such as the Greeks and Romans."
-                pos: (10, title2.y-100)
+                pos_hint: {"center_y": .7, "center_x":.5}
                 text_size: root.width-90, None
                 size: self.texture_size
-                font_size: '20'
+                font_size: root.height/30
             Label:
                 text:"One of the most significant discoveries in the history of cryptography was the discovery of frequency analysis, which is a process that measures the frequency of characters or groups of characters to aid in the decoding of cipher text."
-                pos: (10, 0)
+                pos_hint: {"center_y": .5, "center_x":.5}
                 text_size: root.width-90, None
                 size: self.texture_size
-                font_size: '20'
+                font_size: root.height/30
             Label:
                 text:"The development of frequency analysis made making secured messages nearly impossible until the development of polyalphabetic cipher, a cipher that utilizes many different substitution alphabets to encode messages."
-                pos: (10, -100)
+                pos_hint: {"center_y": .3, "center_x":.5}
                 text_size: root.width-90, None
                 size: self.texture_size
-                font_size: '20'
+                font_size: root.height/30
             Label:
                 text:"Ultimately, modern cryptography is done using the assumption that a system of ciphers itself is not secure enough, and that the protection of a message’s key was the best form of protection and security in the modern age."
-                pos: (10, -190)
+                pos_hint: {"center_y": .15, "center_x":.5}
                 text_size: root.width-90, None
                 size: self.texture_size
-                font_size: '20'
+                font_size: root.height/30
         # SLIDE 3
         FloatLayout:
             Label:
                 id: title3
-                pos_x: -20
-                pos_hint: {"center_y": .86}
-                text: "Caesar ciphers"
-                font_size: '35'
+                pos_hint: {"center_y": .85, "center_x":.5}
+                size_hint: 1, None
+                height: self.texture_size[1]
+                text: "Caesar Ciphers"
+                font_size: root.height/16
                 bold: True
             Label:
                 text:"Caesar ciphers are used by shifting the alphabet of a message by a set amount to encode the message. For example, for a Caesar cipher with a shift of 4, every instance of the letter ‘A’ would become the letter ‘E’, every instance of the letter ‘B’ would become the letter ‘F’, and so on for the entire alphabet, wrapping the alphabet around when shifting past the end."
-                pos: (10, title3.y-100)
+                pos_hint: {"center_y": .7, "center_x":.5}
                 text_size: root.width-90, None
                 size: self.texture_size
-                font_size: '19'
+                font_size: root.height/30
             Label:
                 id: staticletters
-                pos: (0, title3.y-200)
+                pos_hint: {"center_y": .54, "center_x":.5}
                 size: self.texture_size
                 Image:
                     source: "images/staticletters.png"
@@ -412,7 +414,7 @@
                     size: self.parent.size
             Label:
                 id: shiftedletters
-                pos: (0, staticletters.y-50)
+                pos_hint: {"center_y": .47 , "center_x":.5}
                 size: self.texture_size
                 Image:
                     source: "images/caesarshiftletters.png"
@@ -421,35 +423,36 @@
                     size: self.parent.size
             Label:
                 text:"SECRET MESSAGE --> WIGVIX QIWWEKI"
-                pos: (100, shiftedletters.y-85)
-                text_size: root.width-90, None
-                size: self.texture_size
-                font_size: '30'
+                pos_hint: {"center_y": .35, "center_x":.5}
+                size_hint: 1, None
+                height: self.texture_size[1]
+                font_size: root.height/26
                 bold: True
             Label:
                 text:"This type of cipher seems fairly basic, and indeed is very easy to crack with modern methods and technology, but like many early forms of cryptography, Caesar ciphers and other early ciphers and their derivatives were necessary for the development of further cryptographic ideas and techniques."
-                pos: (10, shiftedletters.y-190)
+                pos_hint: {"center_y": .2, "center_x":.5}
                 text_size: root.width-90, None
                 size: self.texture_size
-                font_size: '19'
+                font_size: root.height/30
         # SLIDE 4
         FloatLayout:
             Label:
                 id: title3
-                pos_x: -20
-                pos_hint: {"center_y": .86}
-                text: "Basic substitution ciphers"
-                font_size: '35'
+                text: "Basic Substitution Ciphers"
+                pos_hint: {"center_y": .85, "center_x":.5}
+                size_hint: 1, None
+                height: self.texture_size[1]
+                font_size: root.height/16
                 bold: True
             Label:
                 text:"The basic substitution cipher is very similar to the Caesar cipher, with the difference being that instead of shifting the cipher alphabet a set amount, each letter is instead set to equal another letter at random, with each letter of the original alphabet being assigned to a unique letter of the cipher alphabet. "
-                pos: (10, title3.y-100)
+                pos_hint: {"center_y": .7, "center_x":.5}
                 text_size: root.width-90, None
                 size: self.texture_size
-                font_size: '19'
+                font_size: root.height/30
             Label:
                 id: staticletters
-                pos: (0, title3.y-200)
+                pos_hint: {"center_y": .57 , "center_x":.5}
                 size: self.texture_size
                 Image:
                     source: "images/staticletters.png"
@@ -458,7 +461,7 @@
                     size: self.parent.size
             Label:
                 id: shiftedletters
-                pos: (0, staticletters.y-50)
+                pos_hint: {"center_y": .5 , "center_x":.5}
                 size: self.texture_size
                 Image:
                     source: "images/basicsubletters.png"
@@ -467,34 +470,35 @@
                     size: self.parent.size
             Label:
                 text:"SECRET MESSAGE --> KSDXSG NSKKCDS"
-                pos: (90, shiftedletters.y-85)
-                text_size: root.width-90, None
-                size: self.texture_size
-                font_size: '30'
+                pos_hint: {"center_y": .4, "center_x":.5}
+                size_hint: 1, None
+                height: self.texture_size[1]
+                font_size: root.height/26
                 bold: True
             Label:
                 text:"Again, like Caesar ciphers, substitution ciphers seem fairly simplistic and easy to crack with modern techniques and knowledge, which most indeed are, especially with the advent of frequency analysis. But also like Caesar ciphers, substitution ciphers were very important to the history and development of early cryptography. The fundamental idea of substitution is still used in modern ciphers to this day."
-                pos: (10, shiftedletters.y-190)
+                pos_hint: {"center_y": .2, "center_x":.5}
                 text_size: root.width-90, None
                 size: self.texture_size
-                font_size: '19'
+                font_size: root.height/30
         # SLIDE 5
         FloatLayout:
             Label:
                 id: title5
-                pos_x: -20
-                pos_hint: {"center_y": .86}
-                text: "Encoding substitution ciphers"
-                font_size: '35'
+                text: "Encoding Substitution Ciphers"
+                pos_hint: {"center_y": .85, "center_x":.5}
+                size_hint: 1, None
+                height: self.texture_size[1]
+                font_size: root.height/16
                 bold: True
             Label:
                 text:"Encoding a message using a substitution cipher is fairly straightforward. To do so with just a pencil and paper, you should first write down the entire alphabet that you are using."
-                pos: (10, title5.y-100)
+                pos_hint: {"center_y": .7, "center_x":.5}
                 text_size: root.width-90, None
                 size: self.texture_size
-                font_size: '19'
+                font_size: root.height/30
             Label:
-                pos: (0, title5.y-170)
+                pos_hint: {"center_y": .59 , "center_x":.5}
                 size: self.texture_size
                 Image:
                     source: "images/staticletters.png"
@@ -503,12 +507,12 @@
                     size: self.parent.size
             Label:
                 text:"Then, one by one go through each letter and choose a random letter from the alphabet that you have not used previously to replace it with."
-                pos: (10, title5.y-240)
+                pos_hint: {"center_y": .5, "center_x":.5}
                 text_size: root.width-90, None
                 size: self.texture_size
-                font_size: '19'
+                font_size: root.height/30
             Label:
-                pos: (0, -90)
+                pos_hint: {"center_y": .39 , "center_x":.5}
                 size: self.texture_size
                 Image:
                     source: "images/basicsubletters.png"
@@ -517,71 +521,74 @@
                     size: self.parent.size
             Label:
                 text:"Once you have done so, you can simply use the cipher pair of alphabets to write out the message. Many modern programs can be created and used to do this process quickly, but at their fundamental level, electronic substitution ciphers work the same as physical ones, subbing out every letter of the alphabet for a random and unique letter on the cipher alphabet."
-                pos: (10, shiftedletters.y-260)
+                pos_hint: {"center_y": .23, "center_x":.5}
                 text_size: root.width-90, None
                 size: self.texture_size
-                font_size: '19'
+                font_size: root.height/30
         # SLIDE 6
         FloatLayout:
             Label:
                 id: title6
-                pos_x: -20
-                pos_hint: {"center_y": .86}
-                text: "Decoding substitution ciphers"
-                font_size: '35'
+                text: "Decoding Substitution Ciphers"
+                pos_hint: {"center_y": .85, "center_x":.5}
+                size_hint: 1, None
+                height: self.texture_size[1]
+                font_size: root.height/16
                 bold: True
             Label:
                 text:"The most straightforward way of decoding a ciphered message is to use the key to solve it. However, in lieu of a key, the most common way of solving a substitution cipher is to use a previously discussed technique: frequency analysis. The basic premise of frequency analysis is noting the frequency of letters in a cipher and replacing them with letters of equivalent frequency in the corresponding alphabet."
-                pos: (10, title6.y-100)
+                pos_hint: {"center_y": .65, "center_x":.5}
                 text_size: root.width-90, None
                 size: self.texture_size
-                font_size: '19'
+                font_size: root.height/30
             Label:
-                pos: (325, title6.y-20)
-                size: 40, 20
+                pos_hint: {"center_y": .38 , "center_x":.1}
+                size_hint: None, None
                 Image:
                     source: "images/letterfreq.png"
+                    size_hint: 1, 1
                     pos: self.parent.pos
-                    size: 150, 150
+                    size: root.width/4.5, root.height/4.5
             Label:
                 text:"For example, the most frequently used letter in the English alphabet is the letter ‘E’. So if the letter ‘K’ is the most frequent letter in our cipher, we can assume that the original letter that ‘K’ was substituted for was the letter ‘E’."
-                pos: (10, title6.y-290)
+                pos_hint: {"center_y": .2, "center_x":.5}
                 text_size: root.width-90, None
                 size: self.texture_size
-                font_size: '19'
+                font_size: root.height/30
             Label:
                 text:"This process can be repeated for the other letters of the alphabet, using predefined frequencies to compare the cipher text’s letter frequency to."
-                pos: (10, title6.y-530)
+                pos_hint: {"center_y": .07, "center_x":.5}
                 text_size: root.width-90, None
                 size: self.texture_size
-                font_size: '19'
+                font_size: root.height/30
         # SLIDE 7
         FloatLayout:
             Label:
                 id: title7
-                pos_x: -20
-                pos_hint: {"center_y": .86}
-                text: "Making substitution ciphers stronger"
-                font_size: '35'
+                text: "Making Substitution Ciphers Stronger"
+                pos_hint: {"center_y": .85, "center_x":.5}
+                size_hint: 1, None
+                height: self.texture_size[1]
+                font_size: root.height/16
                 bold: True
             Label:
                 text:"Substitution ciphers, in modern times with modern techniques and technology, are fairly weak. So how would one make them stronger?"
-                pos: (10, title7.y-90)
+                pos_hint: {"center_y": .7, "center_x":.5}
                 text_size: root.width-90, None
                 size: self.texture_size
-                font_size: '20'
+                font_size: root.height/30
             Label:
                 text:"One of the common solutions to making a substitution cipher stronger is encoding a message multiple times with varying alphabets. For example, a message may be encoding using the substitution method discussed earlier, and then the new message may be encoded once again, using a new cipher alphabet. "
-                pos: (10, 0)
+                pos_hint: {"center_y": .5, "center_x":.5}
                 text_size: root.width-90, None
                 size: self.texture_size
-                font_size: '20'
+                font_size: root.height/30
             Label:
                 text:"Another solution is to expand the ‘alphabet’ used when encoding. For example, rather than replacing single letters with other letters, you could replace pairs of letters with other pairs, such as the pair ‘EE’ being replaced with ‘TR’, or the pair ‘AB’ being replaced with ‘YH’. This expands the complexity of the cipher."
-                pos: (10, -130)
+                pos_hint: {"center_y": .25, "center_x":.5}
                 text_size: root.width-90, None
                 size: self.texture_size
-                font_size: '20'
+                font_size: root.height/30
     FloatLayout:
         BackArrow:
             on_release: root.manager.current = "main"
