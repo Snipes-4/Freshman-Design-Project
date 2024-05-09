@@ -16,6 +16,7 @@
     halign: "center"
     bold: "True"
     background_normal: ""
+
     
 <MainScreen>
     BoxLayout:
@@ -105,8 +106,9 @@
             pos_hint: {"center_y":.6, "center_x":.5}
         Button:
             id: print_button
-            text: "Print encrypted message"
-            size_hint: .2, .2
+            text: "Print Message"
+            pos_hint: {"top": 1, "right":1}
+            size_hint: .2, .1
             background_color: BUTTON_COLOR
             on_release:
                 root.print_text(encodedmessage.text)
@@ -151,6 +153,7 @@
                 font_size: 25
                 halign: "center"
                 multiline:True
+
 <InputScreen>
     FloatLayout:
         BackArrow:
@@ -176,6 +179,7 @@
                     background_color: BUTTON_COLOR
                     size_hint: 0.2,0.3
                     on_release: root.manager.current = "withoutkey"
+
 <WithKeyScreen>
     message_text_input: usermessageinput
     key_text_input: userkeyinput
@@ -222,7 +226,8 @@
                 size_hint: 0.2,0.3
                 on_release: 
                     root.manager.current = "decode" 
-                    root.submit_messageandkey()          
+                    root.submit_messageandkey()
+
 <WithoutKeyScreen>
     message_text_input: usermessageinput
     text_input_label: usermessageinput
@@ -258,7 +263,6 @@
                     root.manager.current = "decode" 
                     root.submit_message()
 
-            
 <DecodeScreen>
     edited_message_label: edited_message
     original_message_label: original_message
@@ -267,16 +271,17 @@
     FloatLayout:
         BackArrow:
             on_release: root.manager.current = "main"
+        Button:
+            id: print_button
+            text: "Print Message"
+            pos_hint: {"top":1, "right":1}
+            size_hint: .2, .1
+            background_color: BUTTON_COLOR
+            on_release:
+                root.print_text()
         GridLayout:
-            rows:4
+            rows:3
             rows_minimum: {0: 20, 1: 20, 2: 20, 3: 50}
-            Button:
-                id: print_button
-                text: "Print decrypted message"
-                size_hint: .2, .2
-                background_color: BUTTON_COLOR
-                on_release:
-                    root.print_text()
             Label:
                 id: edited_message
                 text:"this message changes"
@@ -326,7 +331,7 @@
                     outline_width: 1
                     text_size: self.size
                     text: 'frequency'
-                    
+                    valign: "bottom"
 
 <LearnScreen>
     Carousel:
