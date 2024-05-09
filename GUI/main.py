@@ -33,7 +33,7 @@ class EncodeScreen(Screen):
     
     def print_text(self, message: str):
 
-        output_name = "file_" + str(self.counter)
+        output_name = "file_" + str(self.counter) + ".txt"
 
         # forces the file to become a text file
         if output_name[len(output_name)-4] == ".":
@@ -97,7 +97,7 @@ class DecodeScreen(Screen):
 
     def print_text(self):
 
-        output_name = "file_" + str(self.counter)
+        output_name = "file_" + str(self.counter) + ".txt"
 
         # forces the file to become a text file
         if output_name[len(output_name)-4] == ".":
