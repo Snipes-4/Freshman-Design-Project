@@ -14,20 +14,6 @@ import pytesseract
 
 Builder.load_file("main.kv")
 
-def print_text(text: str, output_name: str):
-
-    # forces the file to become a text file
-    if output_name[len(output_name)-4] == ".":
-        output_name = output_name[:-4] + ".txt"
-
-    # creates a file with the file_name and writes the text into it
-    with open(output_name, "w") as file:
-        file.write(text)
-
-    # gets the file path and prints the text file
-    file_path = os.path.join(output_name)
-    os.startfile(file_path, "print")
-
 class MainScreen(Screen):
     pass
 
@@ -35,6 +21,7 @@ class EncodeScreen(Screen):
     encode_key_text_input = ObjectProperty()
     encode_message_text_input = ObjectProperty()
     encoded_label = ObjectProperty()
+    counter= 100
     
     def encode_message(self, message, key):
         if len(key) >= 26:
@@ -43,6 +30,23 @@ class EncodeScreen(Screen):
             self.encoded_label.text = str(e1)
         else:
             pass
+    
+    def print_text(self, message: str):
+
+        output_name = "file_" + str(self.counter)
+
+        # forces the file to become a text file
+        if output_name[len(output_name)-4] == ".":
+            output_name = output_name[:-4] + ".txt"
+
+        # creates a file with the file_name and writes the text into it
+        with open(output_name, "w") as file:
+            file.write(message)
+
+        # gets the file path and prints the text file
+        file_path = os.path.join(output_name)
+        os.startfile(file_path, "print")
+        self.counter -= 1
         
 
 class DecodeScreen(Screen):
@@ -53,6 +57,7 @@ class DecodeScreen(Screen):
     message = ''
     decoder_key = ''
     frequency = ''
+    counter = 0
 
     def set_message(self, message):
         DecodeScreen.message = message
@@ -89,6 +94,24 @@ class DecodeScreen(Screen):
     def clear_message(self):
         self.d1 = Decoder(self.message)
         self.on_enter()
+
+    def print_text(self):
+
+        output_name = "file_" + str(self.counter)
+
+        # forces the file to become a text file
+        if output_name[len(output_name)-4] == ".":
+            output_name = output_name[:-4] + ".txt"
+
+        # creates a file with the file_name and writes the text into it
+        with open(output_name, "w") as file:
+            string_message = "".join(self.d1.message)
+            file.write(string_message)
+
+        # gets the file path and prints the text file
+        file_path = os.path.join(output_name)
+        os.startfile(file_path, "print")
+        self.counter += 1
 
 class ImportScreen(Screen):
     file_text_input = ObjectProperty()

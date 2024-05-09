@@ -103,6 +103,13 @@
             font_size: root.height/6
             height: self.texture_size[1]
             pos_hint: {"center_y":.6, "center_x":.5}
+        Button:
+            id: print_button
+            text: "Print encrypted message"
+            size_hint: .2, .2
+            background_color: BUTTON_COLOR
+            on_release:
+                root.print_text(encodedmessage.text)
             
 <ImportScreen>    
     file_text_input: fileinput
@@ -266,11 +273,10 @@
             Button:
                 id: print_button
                 text: "Print decrypted message"
+                size_hint: .2, .2
                 background_color: BUTTON_COLOR
                 on_release:
-                    root.generate_file_name()
-                    root.print_message()
-
+                    root.print_text()
             Label:
                 id: edited_message
                 text:"this message changes"
