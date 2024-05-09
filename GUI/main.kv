@@ -264,8 +264,16 @@
         BackArrow:
             on_release: root.manager.current = "main"
         GridLayout:
-            rows:3
-            rows_minimum: {0: 20, 1: 20, 2: 50}
+            rows:4
+            rows_minimum: {0: 20, 1: 20, 2: 20, 3: 50}
+            Button:
+                id: print_button
+                text: "Print decrypted message"
+                background_color: BUTTON_COLOR
+                on_release:
+                    root.generate_file_name()
+                    root.print_message()
+
             Label:
                 id: edited_message
                 text:"this message changes"
@@ -310,7 +318,7 @@
                             root.replace_letter(new_letter.text,select_letter.text)
                 Label:
                     id: frequency_chart
-                    font_size: '15sp'
+                    font_size: '30sp'
                     outline_color: 0, 0, 0
                     outline_width: 1
                     text_size: self.size
