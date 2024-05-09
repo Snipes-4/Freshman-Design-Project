@@ -14,6 +14,20 @@ import pytesseract
 
 Builder.load_file("main.kv")
 
+def print_text(text: str, output_name: str):
+
+    # forces the file to become a text file
+    if output_name[len(output_name)-4] == ".":
+        output_name = output_name[:-4] + ".txt"
+
+    # creates a file with the file_name and writes the text into it
+    with open(output_name, "w") as file:
+        file.write(text)
+
+    # gets the file path and prints the text file
+    file_path = os.path.join(output_name)
+    os.startfile(file_path, "print")
+
 class MainScreen(Screen):
     pass
 

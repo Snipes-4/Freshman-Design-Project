@@ -1,5 +1,6 @@
 from PIL import Image
 import os
+import re
 
 from pdf2image import convert_from_path
 
@@ -29,6 +30,27 @@ def get_file_with_test():
                 file.write(pytesseract.image_to_string(Image.open(output_file)))
             
             os.remove(output_file)
+
+            file1 = open(save_txt, 'r')
+            Lines = file1.readlines()
+            file1.close()
+
+            count = 0
+            for line in Lines:
+                Lines[count] = line.strip()
+                count += 1
+
+            output = ''
+            for line in Lines:
+                output += line
+
+            regex = re.compile('[^a-zA-Z]')
+            output = regex.sub('', output)
+            output = output.lower()
+            
+            file1 = open(save_txt, "w")
+            file1.write(output)
+            file1.close()
     
     except:
         print("Sorry, that file was not found.")
@@ -49,3 +71,4 @@ def attempt_to_print(file):
         attempt_to_print(file)
 
 get_file_with_test()
+
